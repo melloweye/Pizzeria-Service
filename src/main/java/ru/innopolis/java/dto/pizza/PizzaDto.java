@@ -1,5 +1,6 @@
 package ru.innopolis.java.dto.pizza;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import ru.innopolis.java.models.Pizza;
 
@@ -13,14 +14,19 @@ import java.util.stream.Collectors;
 @Builder
 public class PizzaDto {
 
+    @Schema(name = "Pizza id", example = "1")
     private Long id;
 
+    @Schema(name = "Pizza name", example = "Margherita")
     private String name;
 
+    @Schema(name = "Ingredients of a Pizza")
     private String description;
 
+    @Schema(name = "Price if a Pizza", example = "100")
     private int price;
 
+    @Schema(name = "Pizza size", example = "S/M/L")
     private String size;
 
     public static PizzaDto from(Pizza pizza) {

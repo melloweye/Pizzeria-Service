@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer with id " + id + " not found"));
 
-        if (customer.isDeleted()) { //TODO: перепроверить работу этого условия
+        if (customer.isDeleted()) {
             throw new CustomerNotFoundException("Customer with id " + id + " is already deleted");
         }
 
