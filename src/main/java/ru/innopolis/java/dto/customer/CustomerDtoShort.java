@@ -1,6 +1,5 @@
 package ru.innopolis.java.dto.customer;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import ru.innopolis.java.models.Customer;
 
@@ -14,10 +13,8 @@ import java.util.stream.Collectors;
 @Builder
 public class CustomerDtoShort {
 
-    @Schema(name = "Customer's id", example = "1")
     private Long id;
 
-    @Schema(name = "Customer's name", example = "John Doe")
     private String fullName;
 
     public static CustomerDtoShort from(Customer customer) {

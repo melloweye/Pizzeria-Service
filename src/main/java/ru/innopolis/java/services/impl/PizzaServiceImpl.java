@@ -21,6 +21,10 @@ public class PizzaServiceImpl implements PizzaService {
 
     @Override
     public List<PizzaDto> getAll() {
+        if (PizzaDto.from(pizzaRepository.findAllNotDeleted()).isEmpty()) {
+            throw new PizzaNotFoundException("No pizzas found");
+        }
+
         return from(pizzaRepository.findAllNotDeleted());
     }
 

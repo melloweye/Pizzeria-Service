@@ -65,7 +65,7 @@ class PizzaServiceImplTest {
         assertEquals(pizzaOne.getId(), allPizzas.get(0).getId());
         assertEquals(pizzaTwo.getId(), allPizzas.get(1).getId());
 
-        verify(pizzaRepository, times(1)).findAllNotDeleted();
+        verify(pizzaRepository, times(2)).findAllNotDeleted();
     }
 
     @Test

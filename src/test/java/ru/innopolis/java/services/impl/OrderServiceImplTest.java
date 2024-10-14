@@ -84,7 +84,7 @@ class OrderServiceImplTest {
         assertEquals(1, orders.size());
         assertEquals(order.getId(), orders.get(0).getId());
 
-        verify(orderRepository, times(1)).findAllNotDeleted();
+        verify(orderRepository, times(2)).findAllNotDeleted();
     }
 
     @Test

@@ -21,6 +21,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDtoShort> getAll() {
+        if (CustomerDtoShort.from(customerRepository.findAllNotDeleted()).isEmpty()) {
+            throw new CustomerNotFoundException("No customers found");
+        }
         return CustomerDtoShort.from(customerRepository.findAllNotDeleted());
     }
 

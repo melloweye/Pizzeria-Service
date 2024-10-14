@@ -31,7 +31,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDto> getAll() {
-        return OrderDto.from(orderRepository.findAllNotDeleted());
+        if(OrderDto.from(orderRepository.findAllNotDeleted()).isEmpty()) {
+            throw new OrderNotFoundException("No orders found");
+        }
+
+       return OrderDto.from(orderRepository.findAllNotDeleted());
     }
 
     @Override

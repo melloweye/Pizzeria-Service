@@ -1,9 +1,9 @@
 services:
-  postgres:
+  postgres_db:
     image: postgres:latest
     container_name: postgres
     ports:
-      - "5433:5433"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -22,11 +22,14 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - postgres
+      - postgres_db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5433/mydatabase
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/mydatabase
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_FLYWAY_URL: jdbc:postgresql://postgres:5432/mydatabase
+      SPRING_FLYWAY_USER: postgres
+      SPRING_FLYWAY_PASSWORD: postgres
     networks:
       - app-network
 networks:

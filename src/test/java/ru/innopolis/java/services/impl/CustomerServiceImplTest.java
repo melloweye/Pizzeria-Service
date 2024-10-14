@@ -65,7 +65,7 @@ class CustomerServiceImplTest {
         assertEquals(customerFirst.getId(), result.get(0).getId());
         assertEquals(customerSecond.getId(), result.get(1).getId());
 
-        verify(customerRepository, times(1)).findAllNotDeleted();
+        verify(customerRepository, times(2)).findAllNotDeleted();
     }
 
     @Test

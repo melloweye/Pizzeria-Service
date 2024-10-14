@@ -1,6 +1,5 @@
 package ru.innopolis.java.dto.order;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import ru.innopolis.java.models.Order;
 import ru.innopolis.java.models.Pizza;
@@ -17,24 +16,17 @@ import java.util.stream.Collectors;
 @Builder
 public class OrderDto {
 
-    @Schema(name = "Order id", example = "1")
     private Long id;
 
-    @Schema(name = "Customer's id", example = "1")
     private Long customerId;
 
-    @Schema(name = "Pizza ids", example = "1, 2, 3")
     private Set<Long> pizzaIds;
 
-    @Schema(name = "Price of Order", example = "1200")
     private int totalPrice;
 
-    @Schema(name = "Order confirmation date and time")
     private LocalDateTime orderDate;
 
-    @Schema(name = "Order status", example = "Waiting")
     private String status;
-
 
     public static OrderDto from(Order order) {
         return OrderDto.builder()
